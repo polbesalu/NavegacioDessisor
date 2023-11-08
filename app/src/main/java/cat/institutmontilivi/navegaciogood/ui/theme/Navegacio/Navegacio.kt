@@ -1,9 +1,12 @@
 package cat.institutmontilivi.navegaciogood.ui.theme.Navegacio
 
-/*import androidx.compose.runtime.Composable
-import androidx.navigation.NavType
+import androidx.compose.runtime.Composable
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
+import cat.institutmontilivi.navegaciogood.ui.theme.Pantalles.PantallaCaraOCreu
+import cat.institutmontilivi.navegaciogood.ui.theme.Pantalles.PantallaNumeros
+import cat.institutmontilivi.navegaciogood.ui.theme.Pantalles.PreviewPantallaPrincipal
 
 
 @Composable
@@ -17,28 +20,32 @@ fun Navegacio()
         startDestination = ElementDeNavegacio.Principal.rutaBase)
     {
         composable(ElementDeNavegacio.Principal.rutaSencera){
-            PantallaPrincipal(onNavegaLletres = {contraldorDeNavegacio.navigate(ElementDeNavegacio.Lletres.rutaSencera)},
-                onNavegaNumeros = {contraldorDeNavegacio.navigate(ElementDeNavegacio.Numeros.rutaSencera)})
+            PreviewPantallaPrincipal(onNavegaMoneda = {contraldorDeNavegacio.navigate(ElementDeNavegacio.Moneda.rutaSencera)},
+                onNavegaNumeros = {contraldorDeNavegacio.navigate(ElementDeNavegacio.Numeros.rutaSencera)},
+                onNavegaOracle = {contraldorDeNavegacio.navigate(ElementDeNavegacio.Oracle.rutaSencera)})
         }
-        composable(ElementDeNavegacio.Numeros.rutaSencera){
-            PantallaNumeros(onNumeroClick = {contraldorDeNavegacio.navigate(ElementDeNavegacio.Contingut.CreaRutaDeNavegacio(it))})
+        composable(ElementDeNavegacio.Moneda.rutaSencera){
+            PantallaCaraOCreu(onResultadoClick = {contraldorDeNavegacio.navigate(ElementDeNavegacio.Moneda.rutaSencera)},
+                { contraldorDeNavegacio.navigate(ElementDeNavegacio.Principal.rutaSencera) })
         }
-        composable(ElementDeNavegacio.Lletres.rutaSencera){
-            PantallaLletres(onLletraClick = {contraldorDeNavegacio.navigate(ElementDeNavegacio.Contingut.CreaRutaDeNavegacio(it))})
-        }
+        //composable(ElementDeNavegacio.Numeros.rutaSencera){
+           //PantallaNumerosRandom(minim = minim, maxim = maxim+1,
+            //    onNavegaInici = {controladorDeNavegacio.navigate(ElementDeNavegacio.Principal.rutaSencera)}
+            //)
+        //PantallaNumeros()}
+        //}
         composable(
-            route = ElementDeNavegacio.Contingut.rutaSencera,
+            route = ElementDeNavegacio.Oracle.rutaSencera,
             arguments = listOf(
-                navArgument(ElementDeNavegacio.Contingut.argumentsDeNavegacio[0].clau) {type= NavType.StringType}
+                //navArgument(ElementDeNavegacio.Contingut.argumentsDeNavegacio[0].clau) {type= NavType.StringType}
             )
         ){
-            val text=it.arguments?.getString(ElementDeNavegacio.Contingut.argumentsDeNavegacio[0].clau)
-            requireNotNull(text,{"Error el text no pot ser null"})
-            Pantallaelement(text=text)
+            //val text=it.arguments?.getString(ElementDeNavegacio.Contingut.argumentsDeNavegacio[0].clau)
+            //requireNotNull(text,{"Error el text no pot ser null"})
+            //Pantallaelement(text=text)
         }
 
     }
 
 }
 
-*/

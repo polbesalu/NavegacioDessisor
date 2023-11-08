@@ -17,9 +17,9 @@ sealed class ElementDeNavegacio(
 )
 {
     object Principal: ElementDeNavegacio("principal")
+    object Moneda: ElementDeNavegacio("moneda")
     object Numeros: ElementDeNavegacio("numeros")
-    object Lletres: ElementDeNavegacio("lletres")
-    object Contingut: ElementDeNavegacio("contingut",listOf(ArgumentDeNavegacio.Text))
+    object Oracle: ElementDeNavegacio("oracle",listOf(ArgumentDeNavegacio.Text))
     {
         fun CreaRutaDeNavegacio (element: Int) =
             "$rutaBase/${element.toString()}"

@@ -45,7 +45,7 @@ import cat.institutmontilivi.navegaciogood.R
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PantallaCaraOCreu(onResultadoClick: (Boolean) -> Unit) {
+fun PantallaCaraOCreu(onResultadoClick: (Boolean) -> Unit, onNavegaInici: () -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -57,7 +57,7 @@ fun PantallaCaraOCreu(onResultadoClick: (Boolean) -> Unit) {
                     Text("CARA O CREU")
                 },
                 navigationIcon = {
-                    IconButton(onClick = { /* TODO */ }) {
+                    IconButton(onClick = { onNavegaInici }) {
                         Icon(
                             imageVector = Icons.Default.Home,
                             contentDescription = "Pantalla Principal"
@@ -97,7 +97,7 @@ fun CaraOCreu(paddingValues: PaddingValues, onResultatClick: (Boolean) -> Unit) 
             color = MaterialTheme.colorScheme.onSecondary
         )
         Image(
-            painter = painterResource(id = R.drawable.img),
+            painter = painterResource(id = R.drawable.bombboclat),
             contentDescription = null,
             modifier = Modifier
                 .width(56.dp)
@@ -117,9 +117,6 @@ fun CaraOCreu(paddingValues: PaddingValues, onResultatClick: (Boolean) -> Unit) 
         }) {
             Text(text = "PREM PER TIRAR!")
         }
-
         Text(text = opcioSelect)
-
-
     }
 }
