@@ -15,6 +15,7 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -24,6 +25,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -31,6 +36,7 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import cat.institutmontilivi.navegaciogood.R
@@ -48,7 +54,7 @@ fun PantallaCaraOCreu(onResultadoClick: (Boolean) -> Unit) {
                     titleContentColor = MaterialTheme.colorScheme.primary,
                 ),
                 title = {
-                    Text("Heads or Tails")
+                    Text("CARA O CREU")
                 },
                 navigationIcon = {
                     IconButton(onClick = { /* TODO */ }) {
@@ -61,13 +67,19 @@ fun PantallaCaraOCreu(onResultadoClick: (Boolean) -> Unit) {
             )
         }
     ) {
-        CaraOCreu(onResultadoClick)
+        CaraOCreu(it,onResultadoClick)
     }
 }
 
+
 @Composable
-fun CaraOCreu(onResultadoClick: (Boolean) -> Unit) {
+fun CaraOCreu(paddingValues: PaddingValues, onResultatClick: (Boolean) -> Unit) {
     val opcions = listOf(true, false) // true: cara, false: creu
+    var opcioInicial = ""
+
+    var opcioSelect by remember {
+        mutableStateOf(opcioInicial)
+    }
 
     Column(
         modifier = Modifier
@@ -94,6 +106,19 @@ fun CaraOCreu(onResultadoClick: (Boolean) -> Unit) {
                 .clip(shape = CircleShape)
                 .align(Alignment.CenterHorizontally)
         )
+        Button(onClick = {
+            val randomValue = (0..1).random()
+            val heads = 1
+            val tails = 0
+            if (randomValue == 1)
+                opcioSelect = "Cara has guanyat!"
+            else
+                opcioSelect = "Creu has perdut..."
+        }) {
+            Text(text = "PREM PER TIRAR!")
+        }
+
+        Text(text = opcioSelect)
 
 
     }
